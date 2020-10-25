@@ -29,7 +29,7 @@ pip_install () {
 	if [ ! -d "./venv" ]; then
 		# Some distros have venv built into python so this isn't always needed.
 		if is_command 'apt-get'; then
-			apt-get install python3-venv
+			apt-get install -y python3-venv
 		fi
 		python3 -m venv ./venv
 	fi
@@ -50,7 +50,7 @@ system_package_install() {
 	
 	PACKAGES=(aria2 git unzip wget)
 	if is_command 'apt-get'; then
-		$SUDO apt-get install ${PACKAGES[@]}
+		$SUDO apt-get install -y ${PACKAGES[@]}
 	elif is_command 'brew'; then
 		brew install ${PACKAGES[@]}
 	elif is_command 'yum'; then
